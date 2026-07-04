@@ -464,11 +464,14 @@
         <label for="name">Your name</label>
         <input type="text" id="name" name="name" required placeholder="e.g. Adaeze Okafor">
 
+        <label for="title">Project title</label>
+        <input type="text" id="title" name="project_title" required placeholder="e.g. Online Voting System">
+
         <label for="whatsapp">WhatsApp number</label>
         <input type="tel" id="whatsapp" name="whatsapp" required placeholder="e.g. 0915 126 6633">
 
         <label for="project">Describe your project</label>
-        <textarea id="project" name="project_description" required placeholder="What's the topic? What does it need to do? What department are you in?"></textarea>
+        <textarea id="project" name="project_description" required placeholder="Give your best description on what the project is all about or what it should do. Leave empty if you don't know."></textarea>
 
         <button class="submit-btn" onclick="submitForm()">Submit Request</button>
         <div class="form-note">We respond within 24 hours. No payment required to submit.</div>
@@ -484,7 +487,8 @@
       const name = document.getElementById('name').value.trim();
       const whatsapp = document.getElementById('whatsapp').value.trim();
       const project = document.getElementById('project').value.trim();
-      if (!name || !whatsapp || !project) {
+      const title = document.getElementById('title').value.trim();
+      if (!name || !title || !whatsapp) {
         alert('Please fill in all fields before submitting.');
         return;
       }
@@ -492,10 +496,11 @@
       btn.textContent = 'Sending...';
       btn.disabled = true;
       try {
+        const title = document.getElementById('title').value.trim();
         const res = await fetch('https://formspree.io/f/xwvangov', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-          body: JSON.stringify({ name, whatsapp, project_description: project })
+          body: JSON.stringify({ name, project_title: title, whatsapp, project_description: project })
         });
         if (res.ok) {
           document.getElementById('form-body').style.display = 'none';
