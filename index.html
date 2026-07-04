@@ -37,7 +37,7 @@
   /* ===== NAV ===== */
   nav{
     display:flex; justify-content:space-between; align-items:center;
-    padding:26px 0;
+    padding:26px 0; position:relative;
   }
   .logo{
     font-family:'IBM Plex Mono',monospace;
@@ -46,9 +46,39 @@
   }
   .logo span{ color:var(--accent); }
   .navlinks{ display:flex; gap:28px; font-size:14px; font-weight:500; flex-wrap:nowrap; }
-  .navlinks a{ white-space:nowrap; }
-  .navlinks a{ text-decoration:none; color:var(--muted); }
+  .navlinks a{ white-space:nowrap; text-decoration:none; color:var(--muted); }
   .navlinks a:hover{ color:var(--ink); }
+  .hamburger{
+    display:none; flex-direction:column; gap:5px;
+    cursor:pointer; padding:4px; background:none; border:none;
+  }
+  .hamburger span{
+    display:block; width:24px; height:2px;
+    background:var(--ink); border-radius:2px;
+    transition:all 0.2s;
+  }
+  .mobile-menu{
+    display:none; flex-direction:column;
+    position:absolute; top:100%; left:0; right:0;
+    background:var(--paper2);
+    border:1.5px solid var(--line);
+    border-radius:8px;
+    padding:8px 0;
+    z-index:100;
+    box-shadow:0 8px 24px rgba(11,31,46,0.10);
+  }
+  .mobile-menu.open{ display:flex; }
+  .mobile-menu a{
+    text-decoration:none; color:var(--ink);
+    font-size:15px; font-weight:500;
+    padding:13px 20px;
+    border-bottom:1px solid var(--line);
+  }
+  .mobile-menu a:last-child{ border-bottom:none; }
+  @media(max-width:600px){
+    .navlinks{ display:none; }
+    .hamburger{ display:flex; }
+  }
 
   /* ===== HERO ===== */
   .hero{ padding:70px 0 60px 0; }
@@ -281,7 +311,23 @@
       <a href="#pricing">Pricing</a>
       <a href="#request">Request a Build</a>
     </div>
+    <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#work" onclick="closeMenu()">Completed Projects</a>
+      <a href="#pricing" onclick="closeMenu()">Pricing</a>
+      <a href="#request" onclick="closeMenu()">Request a Build</a>
+    </div>
   </nav>
+  <script>
+    function toggleMenu(){
+      document.getElementById('mobileMenu').classList.toggle('open');
+    }
+    function closeMenu(){
+      document.getElementById('mobileMenu').classList.remove('open');
+    }
+  </script>
 
   <section class="hero">
     <div class="stamp">★ Built · Deployed · Live</div>
