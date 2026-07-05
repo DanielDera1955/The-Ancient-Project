@@ -393,7 +393,6 @@
       </div>
 
     </div>
-    <p style="text-align:center; margin-top:18px; font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--muted); letter-spacing:1px;">✦ Best preview displayed on desktop</p>
   </section>
 
   <section class="section" id="pricing">
@@ -403,26 +402,34 @@
       <div class="price-card">
         <div class="price-name">Project Only</div>
         <div class="price-amt">₦70,000</div>
-        <div class="price-desc">Full build, deployed on your own domain.</div>
+        <div class="price-desc">Full build, deployed on your own domain. Pay 50% to start, 50% on delivery.</div>
+        <div style="margin-top:16px; margin-bottom:8px; font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:var(--accent);">What You Get</div>
         <ul class="price-list">
-          <li>UI + backend, scaled to your project</li>
-          <li>Custom domain deployment</li>
-          <li>Submitted for Google search indexing</li>
-          <li>Revisions on request</li>
+          <li>✦ &nbsp;Full frontend UI built to function properly and impress your panel</li>
+          <li>✦ &nbsp;Backend logic built to match exactly what your project requires</li>
+          <li>✦ &nbsp;Your project deployed live on its own custom domain. Not a shared link, not a zipped folder</li>
+          <li>✦ &nbsp;Submitted directly to Google Search Console so your project is searchable online</li>
+          <li>✦ &nbsp;A live URL you can display on your documentation and show your supervisor with confidence</li>
+          <li>✦ &nbsp;Revisions on request before your defense. This is not a one-time handoff</li>
+          <li>✦ &nbsp;WhatsApp support throughout the build so you always know what is happening</li>
         </ul>
       </div>
       <div class="price-card featured">
         <div class="price-name">Project + Slides</div>
         <div class="price-amt">₦95,000</div>
-        <div class="price-desc">Everything above, plus your defense-ready deck.</div>
+        <div class="price-desc">Everything in Project Only, plus your full defense presentation. Pay 50% to start, 50% on delivery.</div>
+        <div style="margin-top:16px; margin-bottom:8px; font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:var(--accent);">What You Get</div>
         <ul class="price-list">
-          <li>Everything in Project Only</li>
-          <li>Defense-ready slide deck</li>
-          <li>Priority turnaround</li>
-          <li>Walkthrough call before your defense</li>
+          <li>✦ &nbsp;Everything in Project Only: full build, live domain, Google indexing</li>
+          <li>✦ &nbsp;Defense-ready slide deck built specifically around your project, not a generic template</li>
+          <li>✦ &nbsp;Slides structured the way panels expect: problem, solution, system design, demo, conclusion</li>
+          <li>✦ &nbsp;Priority build queue so your project is handled before others</li>
+          <li>✦ &nbsp;Pre-defense walkthrough where we go through the project and slides together so you can answer questions confidently</li>
+          <li>✦ &nbsp;You walk into your defense with a live app, a polished deck, and full understanding of your own system</li>
         </ul>
       </div>
     </div>
+    <p style="text-align:center; margin-top:22px; font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--muted);">50% upfront to begin · 50% on delivery · Balance due within 48hrs of handoff</p>
   </section>
 
   <section class="section">
@@ -465,6 +472,9 @@
         <label for="name">Your name</label>
         <input type="text" id="name" name="name" required placeholder="e.g. Adaeze Okafor">
 
+        <label for="title">Project title</label>
+        <input type="text" id="title" name="project_title" required placeholder="e.g. Online Voting System">
+
         <label for="whatsapp">WhatsApp number</label>
         <input type="tel" id="whatsapp" name="whatsapp" required placeholder="e.g. 0915 126 6633">
 
@@ -485,7 +495,8 @@
       const name = document.getElementById('name').value.trim();
       const whatsapp = document.getElementById('whatsapp').value.trim();
       const project = document.getElementById('project').value.trim();
-      if (!name || !whatsapp || !project) {
+      const title = document.getElementById('title').value.trim();
+      if (!name || !title || !whatsapp) {
         alert('Please fill in all fields before submitting.');
         return;
       }
@@ -496,7 +507,7 @@
         const res = await fetch('https://formspree.io/f/xwvangov', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-          body: JSON.stringify({ name, whatsapp, project_description: project })
+          body: JSON.stringify({ name, project_title: title, whatsapp, project_description: project })
         });
         if (res.ok) {
           document.getElementById('form-body').style.display = 'none';
