@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -145,21 +145,24 @@
   }
 
   /* ===== CASE STUDIES ===== */
-  .case-grid{ display:flex; flex-direction:column; gap:18px; }
+  .case-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px;
+  }
   .case{
     background:var(--paper2);
     border:1.5px solid var(--line);
     border-radius:10px;
     padding:24px 26px;
     display:flex;
+    flex-direction:column;
     justify-content:space-between;
-    align-items:center;
-    gap:20px;
+    gap:16px;
   }
-  .case-left{ flex:1; }
-  .case-name{ font-family:'IBM Plex Mono',monospace; font-weight:700; font-size:18px; }
-  .case-desc{ font-size:14px; color:var(--muted); margin-top:5px; }
-  .case-meta{ display:flex; gap:10px; margin-top:12px; flex-wrap:wrap; }
+  .case-name{ font-family:'IBM Plex Mono',monospace; font-weight:700; font-size:17px; }
+  .case-desc{ font-size:13.5px; color:var(--muted); margin-top:5px; line-height:1.5; }
+  .case-meta{ display:flex; gap:8px; margin-top:12px; flex-wrap:wrap; }
   .tag{
     font-family:'IBM Plex Mono',monospace;
     font-size:11px;
@@ -169,7 +172,14 @@
     padding:3px 9px;
     border-radius:20px;
   }
-  .case-right{ text-align:right; flex-shrink:0; }
+  .case-bottom{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-top:auto;
+    padding-top:14px;
+    border-top:1px dashed var(--line);
+  }
   .approved{
     font-family:'IBM Plex Mono',monospace;
     font-size:11px;
@@ -177,12 +187,9 @@
     border:1.5px solid #1A8F62;
     border-radius:4px;
     padding:4px 10px;
-    transform:rotate(2deg);
     display:inline-block;
-    margin-bottom:10px;
   }
   .case-link{
-    display:block;
     font-family:'IBM Plex Mono',monospace;
     font-size:13px;
     color:var(--accent);
@@ -298,8 +305,7 @@
   }
   @media (max-width:680px){
     h1{ font-size:34px; }
-    .case{ flex-direction:column; align-items:flex-start; }
-    .case-right{ text-align:left; }
+    .case-grid{ grid-template-columns:1fr; }
     .price-grid, .steps{ flex-direction:column; }
   }
 </style>
@@ -382,50 +388,70 @@
     <div class="case-grid">
 
       <div class="case">
-        <div class="case-left">
+        <div>
           <div class="case-name">BrandVault</div>
-          <div class="case-desc">Brand identity management system — asset storage, brand guideline pages, client-facing dashboard.</div>
+          <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--muted); margin-top:4px; letter-spacing:0.5px;">Built for <span style="color:var(--ink); font-weight:600;">Ohagbara Pascal</span></div>
+          <div class="case-desc">Brand identity management system with asset storage, brand guideline pages, and a client-facing dashboard.</div>
           <div class="case-meta">
             <div class="tag">Full-stack</div>
             <div class="tag">Supabase</div>
             <div class="tag">Custom domain</div>
           </div>
         </div>
-        <div class="case-right">
+        <div class="case-bottom">
           <div class="approved">✓ Delivered</div>
           <a href="https://brandvault-1059279759936.europe-west1.run.app/" target="_blank" rel="noopener" class="case-link">brandvault.app ↗</a>
         </div>
       </div>
 
       <div class="case">
-        <div class="case-left">
+        <div>
           <div class="case-name">RideConnect</div>
-          <div class="case-desc">Ride-hailing PWA with live routing — real-time map, driver/rider flow, OSRM routing engine.</div>
+          <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--muted); margin-top:4px; letter-spacing:0.5px;">Built for <span style="color:var(--ink); font-weight:600;">Patrick Ibegbu</span></div>
+          <div class="case-desc">Ride-hailing PWA with live routing, real-time map, driver and rider flow, and OSRM routing engine.</div>
           <div class="case-meta">
             <div class="tag">PWA</div>
             <div class="tag">Live routing</div>
             <div class="tag">Custom domain</div>
           </div>
         </div>
-        <div class="case-right">
+        <div class="case-bottom">
           <div class="approved">✓ Delivered</div>
           <a href="https://rideconnect-1059279759936.europe-west1.run.app/" target="_blank" rel="noopener" class="case-link">rideconnect.app ↗</a>
         </div>
       </div>
 
       <div class="case">
-        <div class="case-left">
+        <div>
           <div class="case-name">Smart Traffic Control</div>
-          <div class="case-desc">Smart traffic management system — Flask backend with scikit-learn prediction model.</div>
+          <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--muted); margin-top:4px; letter-spacing:0.5px;">Built for <span style="color:var(--ink); font-weight:600;">Henry Umelechi</span></div>
+          <div class="case-desc">Smart traffic management system with a Flask backend and scikit-learn ML prediction model.</div>
           <div class="case-meta">
             <div class="tag">Flask</div>
             <div class="tag">scikit-learn</div>
             <div class="tag">Custom domain</div>
           </div>
         </div>
-        <div class="case-right">
+        <div class="case-bottom">
           <div class="approved">✓ Delivered</div>
           <a href="https://smart-traffic-management-system-60597854905.europe-west1.run.app/" target="_blank" rel="noopener" class="case-link">smarttraffic.app ↗</a>
+        </div>
+      </div>
+
+      <div class="case">
+        <div>
+          <div class="case-name">Caritas Noticeboard</div>
+          <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--muted); margin-top:4px; letter-spacing:0.5px;">Built for <span style="color:var(--ink); font-weight:600;">Ugwu Chidera</span></div>
+          <div class="case-desc">Real-time school notice board for Caritas University with announcements, grade portal, lost and found, and faculty sign-in.</div>
+          <div class="case-meta">
+            <div class="tag">Real-time</div>
+            <div class="tag">Grade portal</div>
+            <div class="tag">Full-stack</div>
+          </div>
+        </div>
+        <div class="case-bottom">
+          <div class="approved">✓ Live</div>
+          <a href="https://schoolnoticeboard.netlify.app/" target="_blank" rel="noopener" class="case-link">schoolnoticeboard.app ↗</a>
         </div>
       </div>
 
