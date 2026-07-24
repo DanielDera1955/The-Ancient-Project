@@ -385,6 +385,37 @@
   <section class="section" id="work">
     <div class="sec-label">Delivered</div>
     <div class="sec-title">Projects already live</div>
+    <div style="display:flex; gap:32px; margin-bottom:28px; flex-wrap:wrap;">
+      <div style="text-align:center;">
+        <div id="counter-projects" style="font-family:'IBM Plex Mono',monospace; font-weight:700; font-size:42px; color:var(--accent); line-height:1;">0</div>
+        <div style="font-size:12px; color:var(--muted); margin-top:4px; letter-spacing:1px; text-transform:uppercase;">Projects Delivered</div>
+      </div>
+      <div style="text-align:center;">
+        <div id="counter-clients" style="font-family:'IBM Plex Mono',monospace; font-weight:700; font-size:42px; color:var(--ink); line-height:1;">0</div>
+        <div style="font-size:12px; color:var(--muted); margin-top:4px; letter-spacing:1px; text-transform:uppercase;">Clients Served</div>
+      </div>
+    </div>
+    <script>
+    function animateCounter(id, target, duration) {
+      const el = document.getElementById(id);
+      let start = 0;
+      const step = target / (duration / 16);
+      const timer = setInterval(() => {
+        start += step;
+        if (start >= target) { el.textContent = target; clearInterval(timer); return; }
+        el.textContent = Math.floor(start);
+      }, 16);
+    }
+    function startCounters() {
+      animateCounter('counter-projects', 7, 1200);
+      animateCounter('counter-clients', 6, 1200);
+    }
+    const section = document.getElementById('work');
+    const observer = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) { startCounters(); observer.disconnect(); }
+    }, { threshold: 0.3 });
+    observer.observe(section);
+    </script>
     <div class="case-grid">
 
       <div class="case">
@@ -455,6 +486,57 @@
         <div class="case-bottom">
           <div class="approved">✓ Live</div>
           <a href="https://schoolnoticeboard.netlify.app/" target="_blank" rel="noopener" class="case-link">schoolnoticeboard.app ↗</a>
+        </div>
+      </div>
+
+      <div class="case">
+        <div>
+          <div class="case-name">Teaching Evaluation System</div>
+          <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--muted); margin-top:4px; letter-spacing:0.5px;">Built for <span style="color:var(--ink); font-weight:600;">Big Joe</span></div>
+          <div class="case-desc">A teaching evaluation platform for managing and submitting lecturer assessments and performance reviews.</div>
+          <div class="case-meta">
+            <div class="tag">Full-stack</div>
+            <div class="tag">Evaluation</div>
+            <div class="tag">Custom domain</div>
+          </div>
+        </div>
+        <div class="case-bottom">
+          <div class="approved">✓ Delivered</div>
+          <a href="https://teaching-evaluation-system.netlify.app/" target="_blank" rel="noopener" class="case-link">teachingevaluation.app ↗</a>
+        </div>
+      </div>
+
+      <div class="case">
+        <div>
+          <div class="case-name">School Management System</div>
+          <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--muted); margin-top:4px; letter-spacing:0.5px;">Built for <span style="color:var(--ink); font-weight:600;">Francis</span></div>
+          <div class="case-desc">A complete school management system covering student records, class management, and administrative operations.</div>
+          <div class="case-meta">
+            <div class="tag">Full-stack</div>
+            <div class="tag">Admin panel</div>
+            <div class="tag">Custom domain</div>
+          </div>
+        </div>
+        <div class="case-bottom">
+          <div class="approved">✓ Delivered</div>
+          <a href="https://schoolmanagementsystem-101.netlify.app/" target="_blank" rel="noopener" class="case-link">schoolmanagement.app ↗</a>
+        </div>
+      </div>
+
+      <div class="case">
+        <div>
+          <div class="case-name">Student Performance Dashboard</div>
+          <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--muted); margin-top:4px; letter-spacing:0.5px;">Built for <span style="color:var(--ink); font-weight:600;">Kenneth</span></div>
+          <div class="case-desc">A student performance tracking dashboard with visual analytics, grade monitoring, and academic progress reports.</div>
+          <div class="case-meta">
+            <div class="tag">Dashboard</div>
+            <div class="tag">Analytics</div>
+            <div class="tag">Custom domain</div>
+          </div>
+        </div>
+        <div class="case-bottom">
+          <div class="approved">✓ Delivered</div>
+          <a href="https://student-performance-dashboard-system.netlify.app/" target="_blank" rel="noopener" class="case-link">studentperformance.app ↗</a>
         </div>
       </div>
 
